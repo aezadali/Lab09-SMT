@@ -1,0 +1,44 @@
+This is an ASP.net core (MVC) Application "Lab9 " in visual Studion 2022 proforming Simple CRUD operation using C# and MSSQl and Bootstrap;
+
+CREATE TABLE [dbo].[products] (
+    [Id]          INT           IDENTITY (1, 1) NOT NULL,
+    [Title]       VARCHAR (50)  NOT NULL,
+    [description] VARCHAR (50)  NOT NULL,
+    [image]       VARCHAR (255) NOT NULL,
+    [price]       INT           NOT NULL,
+    [quantity]    INT           NOT NULL,
+    [status]      VARCHAR (150) NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+Install-Package Microsoft.Data.SqlClient
+
+"ConnectionStrings": {
+    "DefaultConnection": ""
+  }
+  .................
+  Build Model
+  Product.cs
+  Data/ProductRepository.cs
+  Register the repository in Program.cs
+  Controllers/ProductsController.cs
+  Create the Razor views
+  Products
+  Views/Products/Index.cshtml
+
+  Enable MVC tag helpers:
+  in Views/_ViewImports.cshtml
+  @using pms_mvc_example
+@using lab9.Models
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+----------------------------------------------------
+-- Optional Demo Data (Insert sample products):
+----------------------------------------------------
+USE pmsdb;
+INSERT INTO [dbo].[products] ([Title], [description], [image], [price], [quantity], [status]) VALUES
+('Wireless Mouse', 'Ergonomic 2.4GHz optical mouse', 'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=200', 25, 50, 'In Stock'),
+('Mechanical Keyboard', 'RGB backlit gaming keyboard', 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=200', 79, 30, 'In Stock'),
+('USB-C Hub', '7-in-1 multi-port adapter', 'https://images.unsplash.com/photo-1625842268584-8f3296236761?w=200', 35, 15, 'Low Stock');
+
+
